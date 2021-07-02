@@ -37,8 +37,19 @@ public class ContactsPage extends TestBase{
 		
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", el);
-		
-		
+			
 	}
+	
+	public boolean verifyContactsCheckboxCheckedTest(String name) {
+		//contactsLabel.click();
+		//driver.findElement(By.xpath("//a[text()='prashant shaha']//parent::td//preceding-sibling::td/div[@class='ui fitted read-only checkbox']/input[@name='id' and @class='hidden']")).click();
+		
+		WebElement el = driver.findElement(By.xpath("//a[text()='"+name+"']//parent::td//preceding-sibling::td/div[@class='ui fitted read-only checkbox']/input[@name='id' and @class='hidden']"));
+		
+		return el.isSelected();
+		
+			
+	}
+	
 	
 }

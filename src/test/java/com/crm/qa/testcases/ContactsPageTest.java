@@ -38,7 +38,7 @@ public class ContactsPageTest extends TestBase{
 	
 	@AfterMethod
 	public void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 	
 	
@@ -52,6 +52,20 @@ public class ContactsPageTest extends TestBase{
 	@Test(priority=2)
 	public void selectContactsTest() {
 		contactsPage.selectContactsByName("prashant shaha");
+		//Assert.assertTrue(contactsPage.verifyContactsCheckboxCheckedTest("prashant shaha"));   // giving no such element exception
+	}
+	
+	@Test(priority=3)
+	public void selectMultipleContacts() {
+		contactsPage.selectContactsByName("prashant shaha");
+		contactsPage.selectContactsByName("Naveen K");
+	}
+	
+	
+	//@Test(priority=4)
+	public void verifyContactsCheckboxCheckedTest() {
+		Assert.assertTrue(contactsPage.verifyContactsCheckboxCheckedTest("prashant shaha"));
+		
 	}
 	
 }
