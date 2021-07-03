@@ -5,6 +5,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.crm.qa.base.TestBase;
 
@@ -13,6 +15,22 @@ public class ContactsPage extends TestBase{
 	
 	@FindBy(xpath="//div[@class='ui header item mb5 light-black']")
 	WebElement contactsLabel;
+	
+	@FindBy(name="first_name")
+	WebElement firstName;
+	
+	@FindBy(name="last_name")
+	WebElement lastName;
+	
+	@FindBy(xpath="//div[@name='company']/input")
+	WebElement company;
+	
+	// select status  dropdown  but there is no select TAG
+	//div[@name='status']
+	
+	
+	@FindBy(xpath="//button[@class='ui linkedin button']")
+	WebElement saveBtn;
 	
 	
 	// Initialize PageFactory Elements 
@@ -49,6 +67,15 @@ public class ContactsPage extends TestBase{
 		return el.isSelected();
 		
 			
+	}
+	
+	public void createNewContact(String fname, String lname, String comp) {
+		
+		firstName.sendKeys(fname);
+		lastName.sendKeys(lname);
+		company.sendKeys(comp);
+		saveBtn.click();
+		
 	}
 	
 	

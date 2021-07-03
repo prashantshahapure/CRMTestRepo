@@ -3,6 +3,7 @@ package com.crm.qa.testcases;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.crm.qa.base.TestBase;
@@ -17,6 +18,8 @@ public class ContactsPageTest extends TestBase{
 	HomePage homePage;
 	ContactsPage contactsPage;
 	TestUtil testUtil;
+	
+	String sheetName = "contacts";
 	
 	
 	public ContactsPageTest() {
@@ -62,10 +65,29 @@ public class ContactsPageTest extends TestBase{
 	}
 	
 	
+		
+	
 	//@Test(priority=4)
 	public void verifyContactsCheckboxCheckedTest() {
 		Assert.assertTrue(contactsPage.verifyContactsCheckboxCheckedTest("prashant shaha"));
 		
 	}
+	
+	
+	@DataProvider
+	public Object[][] getCRMTestData() throws Exception {
+		Object [][]data = testUtil.getTestData(sheetName);
+		return data;
+	}
+	
+	@Test(priority=5, dataProvider="getCRMTestData")  // column names should match with excel sheet column name
+	public void validateCreateNewContact(String firstname, String lastname, String company) throws Exception {
+		
+		homePage.ClickOnNewContact();
+		//contactsPage.createNewContact("Ira", "shaha", "Google");
+		contactsPage.createNewContact(firstname, lastname, company);
+		// You can user Assert here whether the contact is added or not,  you can pass the TEXT and check it isDisplayed() or not
+	}
+	
 	
 }
