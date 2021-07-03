@@ -64,9 +64,6 @@ public class ContactsPageTest extends TestBase{
 		contactsPage.selectContactsByName("Naveen K");
 	}
 	
-	
-		
-	
 	//@Test(priority=4)
 	public void verifyContactsCheckboxCheckedTest() {
 		Assert.assertTrue(contactsPage.verifyContactsCheckboxCheckedTest("prashant shaha"));
